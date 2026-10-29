@@ -158,12 +158,11 @@ test-ci-coverage: SHELL:=/bin/bash
 test-ci-coverage:
 	BABEL_COVERAGE=true BABEL_ENV=test $(MAKE) bootstrap
 	BABEL_ENV=test TEST_TYPE=cov ./scripts/test-cov.sh
-	bash <(curl -s https://codecov.io/bash) -f coverage/coverage-final.json
 
 bootstrap-flow:
 	rm -rf build/flow
 	mkdir -p build
-	git clone --branch=master --single-branch --shallow-since=2018-11-01 https://github.com/facebook/flow.git build/flow
+	git clone --branch=main --single-branch --shallow-since=2018-11-01 https://github.com/facebook/flow.git build/flow
 	cd build/flow && git checkout $(FLOW_COMMIT)
 
 test-flow:
@@ -178,7 +177,7 @@ test-flow-update-whitelist:
 bootstrap-typescript:
 	rm -rf ./build/typescript
 	mkdir -p ./build
-	git clone --branch=master --single-branch --shallow-since=2019-09-01 https://github.com/microsoft/TypeScript.git ./build/typescript
+	git clone --branch=main --single-branch --shallow-since=2019-09-01 https://github.com/microsoft/TypeScript.git ./build/typescript
 	cd build/typescript && git checkout $(TYPESCRIPT_COMMIT)
 
 test-typescript:
@@ -193,7 +192,7 @@ test-typescript-update-whitelist:
 bootstrap-test262:
 	rm -rf build/test262
 	mkdir -p build
-	git clone --branch=master --single-branch --shallow-since=2019-12-01 https://github.com/tc39/test262.git build/test262
+	git clone --branch=main --single-branch --shallow-since=2019-12-01 https://github.com/tc39/test262.git build/test262
 	cd build/test262 && git checkout $(TEST262_COMMIT)
 
 test-test262:
